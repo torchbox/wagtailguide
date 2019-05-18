@@ -3,6 +3,8 @@
 
 ## What is it?
 
+The Wagtail Guide app adds functionality for creating and editing a guide for editors and publishers to help them create good content.
+
 ![gif eg](https://s3.gifyu.com/images/wg-eg.gif)
 
 ## Installation
