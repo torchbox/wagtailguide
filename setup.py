@@ -1,8 +1,7 @@
 
 #!/usr/bin/env python
 """
-Installs the Wagtail Quick Create plugin which offers shortcut links on the admin
-home screen to create defined pages under parent pages.
+Installs the Wagtail Guide plugin.
 """
 
 from setuptools import setup, find_packages
@@ -13,13 +12,13 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 
-setup(name='wagtail-quick-create',
+setup(name='wagtail_guide',
       version='1.0.7',
-      description='Offer links to the admin user to create content under sections quickly.',
+      description='Adds functionality to add and edit a CMS guide page for editors.',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/kevinhowbrook/wagtail_guide',
-      author='Kevin Howbrook - Torchbox, Kate Statton - NYPR',
+      author='Kevin Howbrook - Torchbox',
       author_email='kevin.howbrook@torchbox.com',
       license='MIT',
       packages=find_packages(exclude=['tests*']),
