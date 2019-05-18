@@ -10,7 +10,7 @@
 Wagtailguide has a pypi package and can be installed with:
 
 ```
-pip install wagtailguide
+pip install wagtail-guide
 ```
 
 After installing, add it to your settings file along with `wagtail.contrib.settings`, the settings inclusion should be placed with your other wagtail.contrib libraries:
