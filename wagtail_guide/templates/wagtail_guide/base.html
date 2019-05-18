@@ -1,0 +1,45 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags i18n static wagtailcore_tags %}
+
+{% block titletag %}{% trans 'Editor Guide' %}{% endblock %}
+
+{% block content %}
+    {% trans "Editor Guide" as title_trans %}
+    {% include "wagtailadmin/shared/header.html" with title=title_trans %}
+
+    <div class="nice-padding">
+        {% if content.information_text %}
+            <div class="help-block help-info">
+                  {{ content.information_text }}
+            </div>
+        {% endif %}
+        {% if nav %}
+        <h2>Contents</h2>
+            <ul class="in-page-nav js-in-page-nav js-sticky">
+                {% for block in content.sections %}
+                    {% if block.block_type == 'heading' %}
+                        <li><a class="in-page-nav__item" href="#section-{{ block.value|slugify }}">
+                            {{ block.value }}
+                        </a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="guide-content">
+            {% if content.sections %}
+                {% for block in content.sections %}
+                    {% if block.block_type == 'heading' %}
+                        <div class="in-page-nav__anchor sidebar-layout__main-narrow sf-heading">
+                            <span class="in-page-nav__anchor-point" id="section-{{ block.value|slugify }}"></span>
+                            <h2>{{ block.value }}</h2>
+                        </div>
+                    {% else %}
+                        {% include_block block %}
+                    {% endif %}
+                    {% endfor %}
+            {% else %}
+                <p class="help-block help-warning">An editor guide has not been created yet. Add one in Settings > Editor guide</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
