@@ -13,11 +13,11 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(name='wagtail_guide',
-      version='1.0.1',
+      version='1.0.2',
       description='Adds functionality to add and edit a CMS guide page for editors.',
       long_description=long_description,
       long_description_content_type='text/markdown',
-      url='https://github.com/kevinhowbrook/wagtail_guide',
+      url='https://github.com/kevinhowbrook/wagtailguide',
       author='Kevin Howbrook - Torchbox',
       author_email='kevin.howbrook@torchbox.com',
       license='MIT',
