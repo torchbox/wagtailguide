@@ -4,7 +4,10 @@ from .models import EditorGuide
 
 def index(request):
     # There should only ever be one instance of the guide
-    content = EditorGuide.objects.all().first()
+    # But we need to check the site incase there is a 'per' site guide
+    # On a multisite setup
+    content = EditorGuide.objects.all().filter(site=request.site).first()
+
 
     # Send a boolean to populate a menu if there are more than
     # one 'heading' block type.
