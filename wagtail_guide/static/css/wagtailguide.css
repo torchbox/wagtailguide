@@ -1,0 +1,52 @@
+.guide-content .responsive-object {
+	position: relative;
+	overflow: hidden;
+	padding-top: 56.25%;
+	padding-bottom: 15px !important;	
+}
+
+.guide-content .responsive-object iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.guide-content blockquote {
+	border-left: 2px solid #d9d9d9;
+	font-size: 0.9rem;
+	padding-left: 15px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: 0.6em;
+	padding-bottom: 0.6em;
+}
+
+.guide-content blockquote p {
+	font-size: 1.1rem;
+	margin-bottom: 0.75em;
+}
+
+.guide-content .pullquote {
+	float: right;
+    font-size: 2rem;
+    max-width: 30%;
+    line-height: 2.2rem;
+    margin: 0.75em 0.75em 0.75em 2em;
+}
+
+@media(max-width: 1200px) {
+	.guide-content .pullquote {
+	    max-width: 50%;
+	}
+}
+
+@media(max-width: 1000px) {
+	.guide-content .pullquote {
+	    max-width: 100%;
+	    margin-left: 0;
+	    margin-right: 0;
+	}
+}
