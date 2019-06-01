@@ -4,3 +4,12 @@
 build/
 dist/
 .tox/
+
+*.DS_Store
+.venv
+venv
+*.log
+*.sqlite3
+*.vscode/
+*.idea/
+Pipfile
