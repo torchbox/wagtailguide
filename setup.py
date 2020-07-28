@@ -4,8 +4,9 @@
 Installs the Wagtail Guide plugin.
 """
 
-from setuptools import setup, find_packages
 from os import path
+
+from setuptools import find_packages, setup
 
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
@@ -25,4 +26,5 @@ setup(name='wagtail_guide',
       include_package_data=True,
       install_requires=[
           'wagtail>=2.4',
+          'django>=2.1',
       ])
