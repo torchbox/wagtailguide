@@ -1,13 +1,14 @@
-from django.test import TestCase
-from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
-
+from django.test import TestCase
+from django.urls import reverse
 from wagtail.core.models import Page
 from wagtail.tests.utils import WagtailTestUtils
+from wagtail.tests.utils.form_data import (inline_formset, nested_form_data,
+                                           streamfield)
+
 from ..models import EditorGuide
-from wagtail.tests.utils.form_data import (
-    streamfield, nested_form_data, inline_formset)
+
 
 class EditorGuideTest(TestCase, WagtailTestUtils):
 
@@ -39,7 +40,7 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
     def test_editor_view_null_message(self):
         # Check we see the no create message if no guide is added
         response = self.client.get(reverse('wagtaileditorguide'))
-        self.assertContains(response, '<p class="help-block help-warning">An editor guide has not been created yet. Add one in Settings > Editor guide</p>', html=True)
+        self.assertContains(response, '<p class="help-block help-warning">An editor guide has not been created yet. Add one in Settings > Manage Editor Guide</p>', html=True)
 
     def test_adding_a_guide(self):
         # Check we can see field data in the guide once added
