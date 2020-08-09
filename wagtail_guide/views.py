@@ -15,9 +15,18 @@ def index(request):
     # Send a boolean to populate a menu if there are more than
     # one 'heading' block type.
     nav = False
-    if content:
-        if len([i.block_type for i in content.sections if i.block_type=='heading']) > 1:
-            nav = True
+    if (
+        content
+        and len(
+            [
+                i.block_type
+                for i in content.sections
+                if i.block_type == 'heading'
+            ]
+        )
+        > 1
+    ):
+        nav = True
 
     return render(request, 'wagtail_guide/base.html', {
         'content': content,
