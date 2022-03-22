@@ -25,6 +25,5 @@ setup(name='wagtail_guide',
       packages=find_packages(exclude=['tests*']),
       include_package_data=True,
       install_requires=[
-          'wagtail>=2.4',
-          'django>=2.1',
+          'wagtail>=2.16',
       ])

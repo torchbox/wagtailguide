@@ -23,6 +23,9 @@ INSTALLED_APPS = [
 ]
 ```
 
+## Dependencies
+Wagtail Guide requires `wagtail>=2.16`
+
 ## Usage
 To edit the guide, the user needs to be an admin, or have the `Manage editor guide` 'change' value checked in their user group permissions.
 
