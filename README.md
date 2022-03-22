@@ -1,5 +1,5 @@
 # Wagtail Guide
-[![CircleCI](https://circleci.com/gh/kevinhowbrook/wagtailguide.svg?style=shield&circle)](https://circleci.com/gh/kevinhowbrook/wagtailguide)
+![tests](https://github.com/kevinhowbrook/wagtailguide/workflows/Tests/badge.svg)
 
 ## What is it?
 

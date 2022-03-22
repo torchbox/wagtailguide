@@ -27,11 +27,11 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
 
     def test_guide_view_links(self):
         response = self.client.get(reverse('wagtailadmin_home'))
-        self.assertContains(response, '<a href="/admin/editorguide/" class="icon icon-help">Editor guide</a>', html=True)
+        self.assertIn('"name": "editor-guide", "label": "Editor guide"', response.content.decode())
 
     def test_guide_edit_links(self):
         response = self.client.get(reverse('wagtailadmin_home'))
-        self.assertContains(response, '<a href="/admin/settings/wagtail_guide/editorguide/" class="icon icon-help">Manage Editor Guide</a>', html=True)
+        self.assertIn('"name": "manage-editor-guide", "label": "Manage Editor Guide"', response.content.decode())
 
     def test_editor_view(self):
         response = self.client.get(reverse('wagtaileditorguide'))
