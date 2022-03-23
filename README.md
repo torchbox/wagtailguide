@@ -1,5 +1,5 @@
 # Wagtail Guide
-[![CircleCI](https://circleci.com/gh/kevinhowbrook/wagtailguide.svg?style=shield&circle)](https://circleci.com/gh/kevinhowbrook/wagtailguide)
+![tests](https://github.com/kevinhowbrook/wagtailguide/workflows/Tests/badge.svg)
 
 ## What is it?
 
@@ -22,6 +22,9 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
 ]
 ```
+
+## Dependencies
+Wagtail Guide requires `wagtail>=2.16`
 
 ## Usage
 To edit the guide, the user needs to be an admin, or have the `Manage editor guide` 'change' value checked in their user group permissions.

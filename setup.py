@@ -14,7 +14,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(name='wagtail_guide',
-      version='1.0.5',
+      version='1.0.6',
       description='Adds functionality to add and edit a CMS guide page for editors.',
       long_description=long_description,
       long_description_content_type='text/markdown',
@@ -25,6 +25,5 @@ setup(name='wagtail_guide',
       packages=find_packages(exclude=['tests*']),
       include_package_data=True,
       install_requires=[
-          'wagtail>=2.4',
-          'django>=2.1',
+          'wagtail>=2.16',
       ])
