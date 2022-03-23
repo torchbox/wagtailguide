@@ -1,5 +1,5 @@
 # Wagtail Guide
-![tests](https://github.com/kevinhowbrook/wagtailguide/workflows/Tests/badge.svg)
+![tests](https://github.com/kevinhowbrook/wagtailguide/workflows/Test/badge.svg)
 
 ## What is it?
 
