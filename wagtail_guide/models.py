@@ -7,7 +7,7 @@ from wagtail.images.blocks import ImageChooserBlock
 
 if WAGTAIL_VERSION >= (3, 0):
     from wagtail import blocks
-    from wagtail.admin.panels import FieldPanel, StreamFieldPanel
+    from wagtail.admin.panels import FieldPanel
     from wagtail.fields import StreamField
 else:
     from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -89,13 +89,19 @@ class GuideBlock(blocks.StreamBlock):
 @register_setting(icon="help")
 class EditorGuide(BaseSetting, ClusterableModel):
     information_text = models.TextField(
-        blank=True, help_text='Add a leading information paragraph explaining the guide')
-    sections = StreamField(GuideBlock(required=False), blank=True)
+        blank=True, help_text="Add a leading information paragraph explaining the guide"
+    )
+    sections = (
+        StreamField(GuideBlock(required=False), blank=True, use_json_field=True)
+        if WAGTAIL_VERSION >= (3, 0)
+        else StreamField(GuideBlock(required=False), blank=True)
+    )
 
-    panels = [
-        FieldPanel('information_text'),
-        StreamFieldPanel('sections')
-    ]
+    panels = (
+        [FieldPanel("information_text"), FieldPanel("sections")]
+        if WAGTAIL_VERSION >= (3, 0)
+        else [FieldPanel("information_text"), StreamFieldPanel("sections")]
+    )
 
     class Meta:
         verbose_name = 'Manage Editor Guide'
