@@ -1,12 +1,18 @@
 from django.db import models
-
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
+from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.core.fields import StreamField
-from wagtail.core import blocks
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail import blocks
+    from wagtail.admin.panels import FieldPanel, StreamFieldPanel
+    from wagtail.fields import StreamField
+else:
+    from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+    from wagtail.core import blocks
+    from wagtail.core.fields import StreamField
 
 
 class ImageBlock(blocks.StructBlock):

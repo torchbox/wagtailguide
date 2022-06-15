@@ -1,10 +1,14 @@
-from django.urls import re_path
 from django.templatetags.static import static
-from django.urls import reverse
+from django.urls import re_path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail.admin.menu import MenuItem
-from wagtail.core import hooks
+
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail import hooks
+else:
+    from wagtail.core import hooks
 
 from . import views
 
