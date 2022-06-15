@@ -2,10 +2,12 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.test import TestCase
 from django.urls import reverse
-from wagtail.core.models import Page
-from wagtail.tests.utils import WagtailTestUtils
-from wagtail.tests.utils.form_data import (inline_formset, nested_form_data,
-                                           streamfield)
+from wagtail import VERSION as WAGTAIL_VERSION
+
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail.test.utils import WagtailTestUtils
+else:
+    from wagtail.tests.utils import WagtailTestUtils
 
 from ..models import EditorGuide
 
