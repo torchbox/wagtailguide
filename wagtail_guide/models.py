@@ -56,26 +56,40 @@ class EmbedTitleBlock(blocks.StructBlock):
 
     class Meta:
         icon = "media"
-        template = 'wagtail_guide/streamfield/blocks/embed_block.html'
+        template = "wagtail_guide/streamfield/blocks/embed_block.html"
 
 
 class VideoBlock(blocks.StructBlock):
-    video = EmbedBlock(required=False, label='Video URL')
+    video = EmbedBlock(required=False, label="Video URL")
 
     class Meta:
         icon = "media"
-        template = 'wagtail_guide/streamfield/blocks/video_block.html'
+        template = "wagtail_guide/streamfield/blocks/video_block.html"
         label = "Video"
 
 
 class GuideBlock(blocks.StreamBlock):
     heading = blocks.CharBlock(
-        classname='full title', icon='title',
-        template='wagtail_guide/streamfield/blocks/heading_block.html'
+        classname="full title",
+        icon="title",
+        template="wagtail_guide/streamfield/blocks/heading_block.html",
     )
 
-    paragraph = blocks.RichTextBlock(features=[
-        'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'link', 'ul', 'ol', 'hr'])
+    paragraph = blocks.RichTextBlock(
+        features=[
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "bold",
+            "italic",
+            "link",
+            "ul",
+            "ol",
+            "hr",
+        ]
+    )
     image = ImageBlock()
     quote = QuoteBlock()
     pull_quote = PullQuoteBlock()
@@ -104,4 +118,4 @@ class EditorGuide(BaseSetting, ClusterableModel):
     )
 
     class Meta:
-        verbose_name = 'Manage Editor Guide'
+        verbose_name = "Manage Editor Guide"
