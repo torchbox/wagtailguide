@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  release:
+    types: [published, prereleased]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade setuptools wheel
+
+      - name: Build Python package
+        run: python setup.py bdist_wheel sdist
+
+      - name: Upload Python packages artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Python Packages
+          path: dist
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: __token__
+          password: ${{ secrets.pypi_production_token }}

@@ -109,6 +109,7 @@ class Migration(migrations.Migration):
                         ),
                     ),
                 ],
+                use_json_field=True,
                 blank=True,
             )
             if WAGTAIL_VERSION >= (3, 0)
@@ -199,7 +200,6 @@ class Migration(migrations.Migration):
                     ),
                 ],
                 blank=True,
-                use_json_field=True
             ),
         ),
     ]

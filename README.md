@@ -1,5 +1,5 @@
 # Wagtail Guide
-![tests](https://github.com/kevinhowbrook/wagtailguide/workflows/Test/badge.svg)
+![tests](https://github.com/kevinhowbrook/wagtailguide/workflows/Test/badge.svg) [![codecov](https://codecov.io/gh/kevinhowbrook/wagtailguide/branch/master/graph/badge.svg?token=K2XKBfubBh)](https://codecov.io/gh/kevinhowbrook/wagtailguide)
 
 ## What is it?
 

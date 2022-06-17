@@ -1,4 +1,4 @@
-name: Test
+name: Tests
 
 on:
   push:
@@ -6,26 +6,62 @@ on:
   pull_request:
     branches: [master]
 
+# Current configuration:
+# - python 3.9, wagtail 3.0
+# - python 3.9, wagtail 2.16
+# - python 3.8, wagtail 2.16
+
+
 jobs:
-  test:
+  lint:
+    name: 🧹 Lint
     runs-on: ubuntu-latest
     steps:
-      #----------------------------------------------
-      #       check-out repo and set-up python
-      #----------------------------------------------
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
         with:
           python-version: 3.9
-      #----------------------------------------------
-      # install root project, if required
-      #----------------------------------------------
-      - name: Install
+          cache: "pip"
+          cache-dependency-path: "**/setup.cfg"
+      - run: pip install -e .[lint]
+      - name: Run flake8
         run: |
-          pip install wagtail
-      #----------------------------------------------
-      #    Test
-      #----------------------------------------------
-      - name: Test with pytest
-        run: |
-          python runtests.py
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - name: Run isort
+        run: isort . --check-only --diff
+      - name: Run black
+        run: black . --check --fast
+  test:
+    name: 🧪 Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - python: 3.9
+            wagtail: wagtail>=3.0,<4.0
+            latest: true
+          - python: 3.9
+            wagtail: wagtail>=2.16,<3.0
+          - python: 3.8
+            wagtail: wagtail>=2.16,<3.0
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python }}
+          cache: "pip"
+          cache-dependency-path: "**/setup.cfg"
+      - run: |
+          pip install coverage
+          pip install "${{ matrix.wagtail }}"
+      - run: |
+          coverage run ./runtests.py
+          coverage report
+          coverage xml
+      - if: ${{ matrix.latest }}
+        uses: codecov/codecov-action@v2
+        with:
+          name: Python 3.9
