@@ -7,10 +7,8 @@ from wagtail.images.blocks import ImageChooserBlock
 if WAGTAIL_VERSION >= (4, 0):
     from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 else:
-    from wagtail.contrib.settings.models import (
-        BaseSetting as BaseSiteSetting,
-        register_setting,
-    )
+    from wagtail.contrib.settings.models import BaseSetting as BaseSiteSetting
+    from wagtail.contrib.settings.models import register_setting
 
 if WAGTAIL_VERSION >= (3, 0):
     from wagtail import blocks
