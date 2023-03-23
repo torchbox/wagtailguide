@@ -42,15 +42,6 @@ jobs:
         include:
           - python: 3.9
             wagtail: wagtail>=4.1,<5.0
-          - python: 3.9
-            wagtail: wagtail>=4.0,<5.0
-            latest: true
-          - python: 3.9
-            wagtail: wagtail>=3.0,<4.0
-          - python: 3.9
-            wagtail: wagtail>=2.16,<3.0
-          - python: 3.8
-            wagtail: wagtail>=2.16,<3.0
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
