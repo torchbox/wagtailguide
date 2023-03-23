@@ -2,12 +2,11 @@ from django.templatetags.static import static
 from django.urls import re_path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 
 from . import views
 from .settings import wagtail_guide_settings
-
-from wagtail import hooks
 
 
 @hooks.register("register_admin_urls")

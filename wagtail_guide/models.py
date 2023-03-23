@@ -1,13 +1,11 @@
 from django.db import models
 from modelcluster.models import ClusterableModel
-from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageChooserBlock
-
-from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
-
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
+from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import StreamField
+from wagtail.images.blocks import ImageChooserBlock
 
 
 class ImageBlock(blocks.StructBlock):
