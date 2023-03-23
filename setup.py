@@ -14,7 +14,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="wagtail_guide",
-    version="1.0.8",
+    version="2.0.0",
     description="Adds functionality to add and edit a CMS guide page for editors.",
     long_description=long_description,
     long_description_content_type="text/markdown",
