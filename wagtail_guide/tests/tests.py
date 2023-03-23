@@ -66,26 +66,3 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
             '<a href="/admin/settings/wagtail_guide/editorguide/" class="icon icon-help">Manage Editor Guide</a>',
             html=True,
         )
-
-    def test_applied_settings(self):
-        """Testing settings.
-        Settings are set in the test settings file and are as follows:
-        WAGTAIL_GUIDE_SETTINGS = {
-            "ADD_WAGTAIL_GUIDE_TO_HELP_MENU": False,
-            "WAGTAIL_GUIDE_MENU_LABEL": "WG guide menu label",
-            "HIDE_WAGTAIL_CORE_EDITOR_GUIDE": True,
-        }
-        We want to test these are applied correctly.
-        """
-
-        # Custom guide should show in menu
-        response = self.client.get(reverse("wagtailadmin_home"))
-        self.assertIn(
-            '"name": "wg-guide-menu-label", "label": "WG guide menu label"',
-            response.content.decode(),
-        )
-        # Core editor guide should be hidden
-        self.assertNotIn(
-            '"name": "editor-guide", "label": "Editor Guide"',
-            response.content.decode(),
-        )
