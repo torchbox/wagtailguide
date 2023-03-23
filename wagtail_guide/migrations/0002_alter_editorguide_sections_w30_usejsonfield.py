@@ -5,12 +5,8 @@ import wagtail.images.blocks
 from django.db import migrations
 from wagtail import VERSION as WAGTAIL_VERSION
 
-if WAGTAIL_VERSION >= (3, 0):
-    import wagtail.blocks as wagtail_blocks
-    import wagtail.fields as wagtail_fields
-else:
-    import wagtail.core.blocks as wagtail_blocks
-    import wagtail.core.fields as wagtail_fields
+import wagtail.blocks as wagtail_blocks
+import wagtail.fields as wagtail_fields
 
 
 class Migration(migrations.Migration):

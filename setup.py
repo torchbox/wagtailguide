@@ -25,7 +25,7 @@ setup(
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     install_requires=[
-        "wagtail>=2.16",
+        "wagtail>=4.1",
     ],
     testing_extras=[
         "coverage>=6.4.1",

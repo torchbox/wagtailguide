@@ -1,6 +1,5 @@
 import os
 
-from wagtail import VERSION as WAGTAIL_VERSION
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -30,7 +29,7 @@ INSTALLED_APPS = [
     "wagtail.documents",
     "wagtail.images",
     "wagtail.admin",
-    "wagtail" if WAGTAIL_VERSION >= (3, 0) else "wagtail.core",
+    "wagtail",
     "taggit",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -70,3 +69,12 @@ TEMPLATES = [
 ]
 WAGTAIL_SITE_NAME = "llama-savers"
 USE_TZ = True
+
+
+WAGTAILADMIN_BASE_URL = "http://localhost:8000"
+
+WAGTAIL_GUIDE_SETTINGS = {
+    "ADD_WAGTAIL_GUIDE_TO_HELP_MENU": False,
+    "WAGTAIL_GUIDE_MENU_LABEL": "WG guide menu label",
+    "HIDE_WAGTAIL_CORE_EDITOR_GUIDE": True,
+}

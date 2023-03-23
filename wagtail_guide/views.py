@@ -1,12 +1,6 @@
 from django.shortcuts import render
-from wagtail import VERSION as WAGTAIL_VERSION
-
+from wagtail.models import Site
 from .models import EditorGuide
-
-if WAGTAIL_VERSION >= (3, 0):
-    from wagtail.models import Site
-else:
-    from wagtail.core.models import Site
 
 
 def index(request):

@@ -1,23 +1,13 @@
 from django.db import models
 from modelcluster.models import ClusterableModel
-from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 
-if WAGTAIL_VERSION >= (4, 0):
-    from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
-else:
-    from wagtail.contrib.settings.models import BaseSetting as BaseSiteSetting
-    from wagtail.contrib.settings.models import register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
-if WAGTAIL_VERSION >= (3, 0):
-    from wagtail import blocks
-    from wagtail.admin.panels import FieldPanel
-    from wagtail.fields import StreamField
-else:
-    from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-    from wagtail.core import blocks
-    from wagtail.core.fields import StreamField
+from wagtail import blocks
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import StreamField
 
 
 class ImageBlock(blocks.StructBlock):
@@ -110,17 +100,9 @@ class EditorGuide(BaseSiteSetting, ClusterableModel):
     information_text = models.TextField(
         blank=True, help_text="Add a leading information paragraph explaining the guide"
     )
-    sections = (
-        StreamField(GuideBlock(required=False), blank=True, use_json_field=True)
-        if WAGTAIL_VERSION >= (3, 0)
-        else StreamField(GuideBlock(required=False), blank=True)
-    )
+    sections = StreamField(GuideBlock(required=False), blank=True, use_json_field=True)
 
-    panels = (
-        [FieldPanel("information_text"), FieldPanel("sections")]
-        if WAGTAIL_VERSION >= (3, 0)
-        else [FieldPanel("information_text"), StreamFieldPanel("sections")]
-    )
+    panels = [FieldPanel("information_text"), FieldPanel("sections")]
 
     class Meta:
         verbose_name = "Manage Editor Guide"

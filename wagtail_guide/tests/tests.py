@@ -2,14 +2,11 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.test import TestCase
 from django.urls import reverse
-from wagtail import VERSION as WAGTAIL_VERSION
 
 from ..models import EditorGuide
 
-if WAGTAIL_VERSION >= (3, 0):
-    from wagtail.test.utils import WagtailTestUtils
-else:
-    from wagtail.tests.utils import WagtailTestUtils
+
+from wagtail.test.utils import WagtailTestUtils
 
 
 class EditorGuideTest(TestCase, WagtailTestUtils):
@@ -25,12 +22,6 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
     def test_admin(self):
         response = self.client.get(reverse("wagtailadmin_home"))
         self.assertEqual(response.status_code, 200)
-
-    def test_guide_view_links(self):
-        response = self.client.get(reverse("wagtailadmin_home"))
-        self.assertIn(
-            '"name": "editor-guide", "label": "Editor guide"', response.content.decode()
-        )
 
     def test_guide_edit_links(self):
         response = self.client.get(reverse("wagtailadmin_home"))
@@ -48,7 +39,8 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
         response = self.client.get(reverse("wagtaileditorguide"))
         self.assertContains(
             response,
-            '<p class="help-block help-warning">An editor guide has not been created yet. Add one in Settings > Manage Editor Guide</p>',
+            '<p class="help-block help-warning">An editor guide has not been\n'
+            "created yet. Add one in Settings > Manage Editor Guide</p>",
             html=True,
         )
 
@@ -75,4 +67,27 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
             response,
             '<a href="/admin/settings/wagtail_guide/editorguide/" class="icon icon-help">Manage Editor Guide</a>',
             html=True,
+        )
+
+    def test_applied_settings(self):
+        """Testing settings.
+        Settings are set in the test settings file and are as follows:
+        WAGTAIL_GUIDE_SETTINGS = {
+            "ADD_WAGTAIL_GUIDE_TO_HELP_MENU": False,
+            "WAGTAIL_GUIDE_MENU_LABEL": "WG guide menu label",
+            "HIDE_WAGTAIL_CORE_EDITOR_GUIDE": True,
+        }
+        We want to test these are applied correctly.
+        """
+
+        # Custom guide should show in menu
+        response = self.client.get(reverse("wagtailadmin_home"))
+        self.assertIn(
+            '"name": "wg-guide-menu-label", "label": "WG guide menu label"',
+            response.content.decode(),
+        )
+        # Core editor guide should be hidden
+        self.assertNotIn(
+            '"name": "editor-guide", "label": "Editor Guide"',
+            response.content.decode(),
         )
