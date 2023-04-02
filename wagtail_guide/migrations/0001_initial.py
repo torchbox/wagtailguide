@@ -2,14 +2,9 @@
 
 import django.db.models.deletion
 from django.db import migrations, models
-from wagtail import VERSION as WAGTAIL_VERSION
 
-if WAGTAIL_VERSION >= (3, 0):
-    import wagtail.blocks as wagtail_blocks
-    import wagtail.fields as wagtail_fields
-else:
-    import wagtail.core.blocks as wagtail_blocks
-    import wagtail.core.fields as wagtail_fields
+import wagtail.blocks as wagtail_blocks
+import wagtail.fields as wagtail_fields
 
 import wagtail.embeds.blocks
 import wagtail.images.blocks

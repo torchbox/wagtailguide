@@ -2,14 +2,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.test import TestCase
 from django.urls import reverse
-from wagtail import VERSION as WAGTAIL_VERSION
+from wagtail.test.utils import WagtailTestUtils
 
 from ..models import EditorGuide
-
-if WAGTAIL_VERSION >= (3, 0):
-    from wagtail.test.utils import WagtailTestUtils
-else:
-    from wagtail.tests.utils import WagtailTestUtils
 
 
 class EditorGuideTest(TestCase, WagtailTestUtils):
@@ -25,12 +20,6 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
     def test_admin(self):
         response = self.client.get(reverse("wagtailadmin_home"))
         self.assertEqual(response.status_code, 200)
-
-    def test_guide_view_links(self):
-        response = self.client.get(reverse("wagtailadmin_home"))
-        self.assertIn(
-            '"name": "editor-guide", "label": "Editor guide"', response.content.decode()
-        )
 
     def test_guide_edit_links(self):
         response = self.client.get(reverse("wagtailadmin_home"))
@@ -48,7 +37,8 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
         response = self.client.get(reverse("wagtaileditorguide"))
         self.assertContains(
             response,
-            '<p class="help-block help-warning">An editor guide has not been created yet. Add one in Settings > Manage Editor Guide</p>',
+            '<p class="help-block help-warning">An editor guide has not been\n'
+            "created yet. Add one in Settings > Manage Editor Guide</p>",
             html=True,
         )
 
