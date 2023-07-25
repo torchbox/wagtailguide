@@ -1,6 +1,6 @@
 # Wagtail Guide
 
-![tests](https://github.com/kevinhowbrook/wagtailguide/workflows/Test/badge.svg) [![codecov](https://codecov.io/gh/kevinhowbrook/wagtailguide/branch/master/graph/badge.svg?token=K2XKBfubBh)](https://codecov.io/gh/kevinhowbrook/wagtailguide)
+![tests](https://github.com/torchbox/wagtailguide/workflows/Test/badge.svg) [![codecov](https://codecov.io/gh/kevinhowbrook/wagtailguide/branch/master/graph/badge.svg?token=K2XKBfubBh)](https://codecov.io/gh/kevinhowbrook/wagtailguide)
 
 ## What is it?
 
@@ -10,13 +10,13 @@ The Wagtail Guide app adds functionality for creating and editing a guide for ed
 
 Wagtailguide has a pypi package and can be installed with:
 
-```
+```bash
 pip install wagtail-guide
 ```
 
 After installing, add it to your settings file along with `wagtail.contrib.settings`, the settings inclusion should be placed with your other wagtail.contrib libraries:
 
-```
+```python
 INSTALLED_APPS = [
     ...
     'wagtail_guide',
@@ -42,7 +42,7 @@ You can use this setting to turn off the Wagtail core Editor Guide link
 Here is an example of a custom menu label (outlined here in orange),
 and placing the editor guide link in the help menu:
 
-```
+```python
 WAGTAIL_GUIDE_SETTINGS = {
     "ADD_WAGTAIL_GUIDE_TO_HELP_MENU": True,
     "WAGTAIL_GUIDE_MENU_LABEL": "CMS Publishing Guide",
@@ -50,11 +50,11 @@ WAGTAIL_GUIDE_SETTINGS = {
 }
 ```
 
-![](screenshots/custom-label.png)
+![custom label](screenshots/custom-label.png)
 
 Here is an example of hiding the core Editor Guide link and just using ours:
 
-```
+```python
 WAGTAIL_GUIDE_SETTINGS = {
     "ADD_WAGTAIL_GUIDE_TO_HELP_MENU": True,
     "WAGTAIL_GUIDE_MENU_LABEL": "CMS Publishing Guide",
@@ -62,11 +62,11 @@ WAGTAIL_GUIDE_SETTINGS = {
 }
 ```
 
-![](screenshots/remove-help.png)
+![remove help](screenshots/remove-help.png)
 
 You can define them in your project settings file like this:
 
-```
+```python
 WAGTAIL_GUIDE_SETTINGS = {
     "ADD_WAGTAIL_GUIDE_TO_HELP_MENU": False,
     "WAGTAIL_GUIDE_MENU_LABEL": "WG guide menu label",
@@ -97,3 +97,7 @@ Once logged in, a new menu icon towards the bottom of the left hand menu will be
 ## Dependencies
 
 Wagtail Guide requires `wagtail>=4.1`
+
+## Contributing
+
+We welcome contributions to this project, see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for more details.
