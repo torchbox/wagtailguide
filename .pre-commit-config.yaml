@@ -6,6 +6,10 @@ repos:
     rev: 22.3.0
     hooks:
       - id: black
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
   - repo: https://github.com/pycqa/flake8
     # flake8 config is in setup.cfg
     rev: 3.8.3

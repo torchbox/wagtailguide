@@ -27,7 +27,4 @@ setup(
     install_requires=[
         "wagtail>=4.1",
     ],
-    testing_extras=[
-        "coverage>=6.4.1",
-    ],
 )
