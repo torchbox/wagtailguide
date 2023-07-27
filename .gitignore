@@ -13,3 +13,4 @@ venv
 *.vscode/
 *.idea/
 Pipfile
+coverage_html_report
