@@ -26,5 +26,6 @@ setup(
     include_package_data=True,
     install_requires=[
         "wagtail>=4.1",
+        "Django>=3.2",
     ],
 )
