@@ -2,7 +2,8 @@ from django.templatetags.static import static
 from django.urls import re_path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-from wagtail import hooks, VERSION as WAGTAIL_VERSION
+from wagtail import VERSION as WAGTAIL_VERSION
+from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 
 from . import views
