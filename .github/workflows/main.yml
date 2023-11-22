@@ -42,22 +42,47 @@ jobs:
             django: django>=3.2,<4.0
             wagtail: wagtail>=4.1,<4.2
           - python: "3.9"
-            django: django>=4.2,<4.3
+            django: django>=3.2,<4.0
             wagtail: wagtail>=5.1,<5.2
           - python: "3.9"
-            django: django>=4.2,<4.3
+            django: django>=3.2,<4.0
             wagtail: wagtail>=5.2,<5.3
-
+          - python: "3.9"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=4.1,<4.2
+          - python: "3.9"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=5.1,<5.2
+          - python: "3.9"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=5.2,<5.3
           - python: "3.10"
             django: django>=3.2,<4.0
             wagtail: wagtail>=4.1,<4.2
           - python: "3.10"
-            django: django>=4.2,<4.3
+            django: django>=3.2,<4.0
             wagtail: wagtail>=5.1,<5.2
           - python: "3.10"
-            django: django>=4.2,<4.3
+            django: django>=3.2,<4.0
             wagtail: wagtail>=5.2,<5.3
-
+          - python: "3.10"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=4.1,<4.2
+          - python: "3.10"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=5.1,<5.2
+          - python: "3.10"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=5.2,<5.3
+          - python: "3.11"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=4.1,<4.2
+          - python: "3.11"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=5.1,<5.2
+          - python: "3.11"
+            django: django>=4.1,<4.2
+            wagtail: wagtail>=5.2,<5.3
           - python: "3.11"
             django: django>=4.2,<4.3
             wagtail: wagtail>=5.1,<5.2
