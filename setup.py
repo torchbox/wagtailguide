@@ -25,7 +25,7 @@ setup(
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     install_requires=[
-        "wagtail>=4.1",
+        "wagtail>=5.2",
         "Django>=3.2",
     ],
 )

@@ -6,19 +6,22 @@ on:
     branches: [master]
 
 # Current configuration:
-# - python 3.9, django 3.2, wagtail 4.1
-# - python 3.9, django 4.1, wagtail 4.2
-# - python 3.9, django 4.2, wagtail 5.0
+# - python 3.9, django 3.2, wagtail 5.2
+# - python 3.9, django 4.2, wagtail 6.0
+# - python 3.10, django 4.2, wagtail 5.2
+# - python 3.11, django 4.2, wagtail 6.0
+# - python 3.12, django 5.0, wagtail 5.2
+# - python 3.12, django 5.0, wagtail 6.0
 
 jobs:
   lint:
     name: 🧹 Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.11
           cache: "pip"
           cache-dependency-path: "**/setup.cfg"
       - run: pip install -e .[lint]
@@ -40,58 +43,25 @@ jobs:
         include:
           - python: "3.9"
             django: django>=3.2,<4.0
-            wagtail: wagtail>=4.1,<4.2
-          - python: "3.9"
-            django: django>=3.2,<4.0
-            wagtail: wagtail>=5.1,<5.2
-          - python: "3.9"
-            django: django>=3.2,<4.0
             wagtail: wagtail>=5.2,<5.3
           - python: "3.9"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=4.1,<4.2
-          - python: "3.9"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=5.1,<5.2
-          - python: "3.9"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=5.2,<5.3
+            django: django>=4.2,<4.3
+            wagtail: wagtail>=6.0,<6.1
           - python: "3.10"
-            django: django>=3.2,<4.0
-            wagtail: wagtail>=4.1,<4.2
-          - python: "3.10"
-            django: django>=3.2,<4.0
-            wagtail: wagtail>=5.1,<5.2
-          - python: "3.10"
-            django: django>=3.2,<4.0
-            wagtail: wagtail>=5.2,<5.3
-          - python: "3.10"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=4.1,<4.2
-          - python: "3.10"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=5.1,<5.2
-          - python: "3.10"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=5.2,<5.3
-          - python: "3.11"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=4.1,<4.2
-          - python: "3.11"
-            django: django>=4.1,<4.2
-            wagtail: wagtail>=5.1,<5.2
-          - python: "3.11"
-            django: django>=4.1,<4.2
+            django: django>=4.2,<4.3
             wagtail: wagtail>=5.2,<5.3
           - python: "3.11"
             django: django>=4.2,<4.3
-            wagtail: wagtail>=5.1,<5.2
-          - python: "3.11"
-            django: django>=4.2,<4.3
+            wagtail: wagtail>=6.0,<6.1
+          - python: "3.12"
+            django: django>=5.0,<5.1
             wagtail: wagtail>=5.2,<5.3
+          - python: "3.12"
+            django: django>=5.0,<5.1
+            wagtail: wagtail>=6.0,<6.1
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
           cache: "pip"
@@ -104,6 +74,6 @@ jobs:
           coverage report
           coverage xml
       - if: ${{ matrix.latest }}
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4
         with:
           name: Python 3.9

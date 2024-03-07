@@ -96,7 +96,7 @@ Once logged in, a new menu icon towards the bottom of the left hand menu will be
 
 ## Dependencies
 
-Wagtail Guide requires `wagtail>=4.1`
+Wagtail Guide requires `wagtail>=5.2`
 
 ## Contributing
 
