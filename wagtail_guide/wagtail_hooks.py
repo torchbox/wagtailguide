@@ -1,5 +1,5 @@
 from django.templatetags.static import static
-from django.urls import re_path, reverse
+from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from wagtail import hooks
@@ -12,7 +12,7 @@ from .settings import wagtail_guide_settings
 @hooks.register("register_admin_urls")
 def register_admin_urls():
     return [
-        re_path(r"^editorguide/$", views.index, name="wagtaileditorguide"),
+        path("editorguide/", views.index, name="wagtaileditorguide"),
     ]
 
 
