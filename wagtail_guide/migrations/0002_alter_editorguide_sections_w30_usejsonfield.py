@@ -3,7 +3,6 @@
 import wagtail.embeds.blocks
 import wagtail.images.blocks
 from django.db import migrations
-from wagtail import VERSION as WAGTAIL_VERSION
 
 import wagtail.blocks as wagtail_blocks
 import wagtail.fields as wagtail_fields
@@ -106,95 +105,6 @@ class Migration(migrations.Migration):
                     ),
                 ],
                 use_json_field=True,
-                blank=True,
-            )
-            if WAGTAIL_VERSION >= (3, 0)
-            else wagtail_fields.StreamField(
-                [
-                    (
-                        "heading",
-                        wagtail_blocks.CharBlock(
-                            form_classname="full title",
-                            icon="title",
-                            template="wagtail_guide/streamfield/blocks/heading_block.html",
-                        ),
-                    ),
-                    (
-                        "paragraph",
-                        wagtail_blocks.RichTextBlock(
-                            features=[
-                                "h2",
-                                "h3",
-                                "h4",
-                                "h5",
-                                "h6",
-                                "bold",
-                                "italic",
-                                "link",
-                                "ul",
-                                "ol",
-                                "hr",
-                            ]
-                        ),
-                    ),
-                    (
-                        "image",
-                        wagtail_blocks.StructBlock(
-                            [
-                                ("image", wagtail.images.blocks.ImageChooserBlock()),
-                                ("caption", wagtail_blocks.CharBlock(required=False)),
-                            ]
-                        ),
-                    ),
-                    (
-                        "quote",
-                        wagtail_blocks.StructBlock(
-                            [
-                                (
-                                    "quote",
-                                    wagtail_blocks.CharBlock(form_classname="title"),
-                                ),
-                                (
-                                    "attribution",
-                                    wagtail_blocks.CharBlock(required=False),
-                                ),
-                            ]
-                        ),
-                    ),
-                    (
-                        "pull_quote",
-                        wagtail_blocks.StructBlock(
-                            [
-                                (
-                                    "pull_quote",
-                                    wagtail_blocks.CharBlock(form_classname="title"),
-                                )
-                            ]
-                        ),
-                    ),
-                    (
-                        "embed",
-                        wagtail_blocks.StructBlock(
-                            [
-                                ("title", wagtail_blocks.CharBlock(required=False)),
-                                ("embed", wagtail.embeds.blocks.EmbedBlock()),
-                            ]
-                        ),
-                    ),
-                    (
-                        "video",
-                        wagtail_blocks.StructBlock(
-                            [
-                                (
-                                    "video",
-                                    wagtail.embeds.blocks.EmbedBlock(
-                                        label="Video URL", required=False
-                                    ),
-                                )
-                            ]
-                        ),
-                    ),
-                ],
                 blank=True,
             ),
         ),
