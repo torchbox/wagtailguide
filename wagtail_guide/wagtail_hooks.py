@@ -2,6 +2,7 @@ from django.templatetags.static import static
 from django.urls import re_path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from wagtail import VERSION as WAGTAIL_VERSION
 from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 
@@ -20,22 +21,28 @@ if wagtail_guide_settings.ADD_WAGTAIL_GUIDE_TO_HELP_MENU:
 
     @hooks.register("register_help_menu_item")
     def register_editor_guide_menu_item():
+        key = "classname" if WAGTAIL_VERSION >= (5, 2) else "classnames"
+        kwargs = {key: "icon icon-help"}
+
         return MenuItem(
             _(wagtail_guide_settings.WAGTAIL_GUIDE_MENU_LABEL),
             reverse("wagtaileditorguide"),
-            classnames="icon icon-help",
             order=1000,
+            **kwargs,
         )
 
 else:
 
     @hooks.register("register_admin_menu_item")
     def register_editor_guide_menu_item():
+        key = "classname" if WAGTAIL_VERSION >= (5, 2) else "classnames"
+        kwargs = {key: "icon icon-help"}
+
         return MenuItem(
             _(wagtail_guide_settings.WAGTAIL_GUIDE_MENU_LABEL),
             reverse("wagtaileditorguide"),
-            classnames="icon icon-help",
             order=1000,
+            **kwargs,
         )
 
 

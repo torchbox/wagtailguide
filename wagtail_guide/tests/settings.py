@@ -77,3 +77,7 @@ WAGTAIL_GUIDE_SETTINGS = {
     "WAGTAIL_GUIDE_MENU_LABEL": "WG guide menu label",
     "HIDE_WAGTAIL_CORE_EDITOR_GUIDE": True,
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+STATIC_URL = "/static/"
