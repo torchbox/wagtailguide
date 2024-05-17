@@ -63,7 +63,7 @@ class VideoBlock(blocks.StructBlock):
 
 class GuideBlock(blocks.StreamBlock):
     heading = blocks.CharBlock(
-        classname="full title",
+        classname="title",
         icon="title",
         template="wagtail_guide/streamfield/blocks/heading_block.html",
     )
