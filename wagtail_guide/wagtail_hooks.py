@@ -24,7 +24,7 @@ if wagtail_guide_settings.ADD_WAGTAIL_GUIDE_TO_HELP_MENU:
             _(wagtail_guide_settings.WAGTAIL_GUIDE_MENU_LABEL),
             reverse("wagtaileditorguide"),
             order=1000,
-            classname="icon icon-help",
+            icon_name="help",
         )
 
 else:
@@ -35,7 +35,7 @@ else:
             _(wagtail_guide_settings.WAGTAIL_GUIDE_MENU_LABEL),
             reverse("wagtaileditorguide"),
             order=1000,
-            classname="icon icon-help",
+            icon_name="help",
         )
 
 
