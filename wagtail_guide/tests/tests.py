@@ -63,6 +63,9 @@ class EditorGuideTest(TestCase, WagtailTestUtils):
         response = self.client.get(reverse("wagtailadmin_home"))
         self.assertNotContains(
             response,
-            '<a href="/admin/settings/wagtail_guide/editorguide/" class="icon icon-help">Manage Editor Guide</a>',
+            '{"name": "manage-editor-guide", '
+            '"label": "Manage Editor Guide", '
+            '"icon_name": "help", "classname": "", '
+            '"attrs": {}, "url": "/admin/settings/wagtail_guide/editorguide/"}',
             html=True,
         )
